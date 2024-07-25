@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="getUserAgent()">
 
 <h1>Data Viewer V0.0</h1>
 <h2>How much of your data can be seen by the sites you visit?</h2>
 
-<geoLocation>You are located in the: (lorem ipsum) area</geoLocation>
+<geoLocation>You are located in the: (lorem ipsum) area</geoLocation><br>
 
-<ipAddress>Your IP address is : (1.1.1.1)</ipAddress>
+<!-- Get user IP using IPify API -->
+<script type="application/javascript">
+    function getIP(json) {
+      document.write("Your public IP address is: ", json.ip);
+    }
+  </script>
+  
+  <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+<br>
 
-<userBrowser>You are current using the browser: (Lorem ipsum)</userBrowser>
+<userBrowser>You are current using the browser: (Lorem ipsum)</userBrowser><br>
 
-<userSystem>You are likely running this website on a: (lorem ipsum)</userSystem>
+<userSystem>You are likely running this website on a: (lorem ipsum)</userSystem><br>
 
-<userOperatingSystem>Your device's Operating System is :(lorem ipsum)</userOperatingSystem>
+<userOs id="userOS"></userOs>
 
+
+
+<script src="userinfo.js"></script>
 </body>
 </html>

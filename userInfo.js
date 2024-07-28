@@ -1,22 +1,27 @@
 //Declaring variables used to store user information
-let userAgent;
-let userOS='Not found';
+let userBrowser=window.navigator.userAgent;
+let userOS=window.navigator.userAgentData.platform;
 
-function getUserAgent() {
-    userAgent=(window.navigator.userAgent);
-    if(userAgent.match("Windows")){
-        userOS='Windows';
+
+//Summarizing user agent for easier reading
+function summarizeAgent(agent){
+    let mychar=0;
+    for(let i=0;i<agent.length;i++){
+        if(agent[i]==')'){
+            myChar=i;
+        }
     }
-    logUserAgent();
-    showUserInfo();
+    console.log("found ) at "+myChar);
+    agent=agent.slice(myChar+1,agent.length);
+    return agent;
 }
 
 
-function logUserAgent() {
-    console.log(userAgent);
-    console.log(userOS);
-}
 
 function showUserInfo(){
+    document.getElementById("userBrowser").innerHTML="Your browser is recognized as: "+userBrowser;
     document.getElementById("userOS").innerHTML="Your device's Operating System is : "+userOS;
 }
+
+userBrowser=summarizeAgent(userBrowser);
+showUserInfo();

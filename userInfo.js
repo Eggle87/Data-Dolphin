@@ -39,7 +39,7 @@ function findBrowser(){
 
 //Geolocation using https://ip-api.com/docs/api:json#test
 function getLocation(){
-    const apiUrl = 'http://ip-api.com/json/?fields=continent,country,regionName,city,zip';
+    const apiUrl = 'http://ip-api.com/json/?fields=continent,country,regionName,city,zip,query';
 
     //Get API result and set the geolocation text to fit 
     return fetch(apiUrl)
@@ -65,6 +65,7 @@ function showUserInfo(){
     document.getElementById("userBrowser").innerHTML="Your browser is recognized as : "+userBrowser+' v'+browserVersion;
     document.getElementById("userOS").innerHTML="Your device's Operating System is : "+userOS;
     document.getElementById("geo").innerHTML = (`Your current approximate location is : ${userLocation.continent}, ${userLocation.country}, ${userLocation.city}`);
+    document.getElementById('ipAddress').innerHTML=("Your public IPv4 address is : "+ userLocation.query);
 }
 
 

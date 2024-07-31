@@ -3,6 +3,8 @@ let userAgent=window.navigator.userAgent;
 let userOS;
 let userBrowser;
 let browserVersion;
+let userLocation;
+
 
 //Checking if userAgentData is usable on the users browser
 function checkForChromium(agent){
@@ -35,17 +37,37 @@ function findBrowser(){
     browserVersion=brands[0].version;
 }
 
+//Geolocation using https://ip-api.com/docs/api:json#test
+function getLocation(){
+    const apiUrl = 'http://ip-api.com/json/?fields=continent,country,regionName,city,zip';
 
-//Edit the HTML text to show user information
-function showUserInfo(){
-    document.getElementById("userBrowser").innerHTML="Your browser is recognized as: "+userBrowser+' v'+browserVersion;
-    document.getElementById("userOS").innerHTML="Your device's Operating System is : "+userOS;
+    //Get API result and set the geolocation text to fit 
+    return fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // save data to a variable
+        userLocation=data;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 
-console.log(userAgent);
-showUserInfo();
 
+//Edit the HTML text to show user information
+function showUserInfo(){
+    document.getElementById("userBrowser").innerHTML="Your browser is recognized as : "+userBrowser+' v'+browserVersion;
+    document.getElementById("userOS").innerHTML="Your device's Operating System is : "+userOS;
+    document.getElementById("geo").innerHTML = (`Your current approximate location is : ${userLocation.continent}, ${userLocation.country}, ${userLocation.city}`);
+}
 
 
 console.log(window.navigator.userAgentData.brands);
+
+getLocation().then(showUserInfo);

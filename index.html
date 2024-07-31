@@ -2,28 +2,26 @@
 <html>
 <body>
 
-<h1>Data Viewer V0.0</h1>
+<h1>Data Viewer V0.5</h1>
 <h2>How much of your data can be seen by the sites you visit?</h2>
 
-<geoLocation>You are located in the: (lorem ipsum) area</geoLocation><br>
+<geoLocation id="geo">Your current approximate location is : </geoLocation><br>
 
 <!-- Get user IP using IPify API -->
 <script type="application/javascript">
     function getIP(json) {
-      document.write("Your public IP address is: ", json.ip);
+      document.write("Your public IP address is : ", json.ip);
     }
   </script>
   
   <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
 <br>
 
-<userBrowser id="userBrowser">You are current using the browser: (Lorem ipsum)</userBrowser><br>
+<userBrowser id="userBrowser">Your browser is recognized as : </userBrowser><br>
 
 <!-- <userDevice id="userDevice">Lorem, ipsum dolor sit amet consectetur adipisicing elit. </userDevice><br> -->
 
-<userOs id="userOS">Lorem, ipsum dolor sit amet consectetur adipisicing elit. </userOs>
-
-
+<userOs id="userOS">Your device's Operating System is : </userOs><br>
 
 <script src="userinfo.js"></script>
 </body>

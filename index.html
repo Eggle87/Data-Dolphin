@@ -2,19 +2,34 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Data Viewer V0.5</title>
   </head>
 <body>
 
-<h1>Data Viewer V0.5</h1>
-<h2>How much of your data can be seen by the sites you visit?</h2>
+<div class="header">
+  <h1>How much of your data can be seen by the sites you visit?</h1><br><br><br>
+  <img id="Arrow" src="arrow.png"></img>
+</div>
 
-<geoLocation id="geo">Your current approximate location is : </geoLocation><br>
+<div class="bar1">
+  <h2>Geo-Location</h2>
+  <h3 id="geo">Your current approximate location is : </h3><br>
+</div>
 
-<ipAddress id="ipAddress">Your public IPv4 address is : </ipAddress><br>
+<div class="bar2">
+  <h2>IP address</h2>
+  <h3 id="ipAddress">Your public IPv4 address is : </h3><br>
+</div>
 
-<userBrowser id="userBrowser">Your browser is recognized as : </userBrowser><br>
+<div class="bar1">
+  <h2>Browser</h2>
+  <h3 id="userBrowser">Your browser is recognized as : </h3><br>
+</div>
 
-<userOs id="userOS">Your device's Operating System is : </userOs>
+<div class="bar2">
+  <h2>Operating System</h2>
+  <h3 id="userOS">Your device's Operating System is : </h3>
+</div>
 
 <script src="userinfo.js"></script>
 </body>
